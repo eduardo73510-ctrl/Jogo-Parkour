@@ -1,0 +1,10 @@
+.env
+.env.*
+.agents/
+Meujogo/
+output/
+test-results/
+node_modules/
+package-lock.json
+projeto jogo save 2.c3p
+projeto jogo save 2 (2) (1).c3p
