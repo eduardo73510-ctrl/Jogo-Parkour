@@ -1,0 +1,187 @@
+Use a skill manutenção antes de alterar o projeto.
+
+MISSÃO:
+Conectar a animação CorrerRapido ao sistema de corrida rápida / sprint do player no Construct 3.
+
+SITUAÇÃO ATUAL:
+O objeto principal do player é Sprite4.
+Ele já possui as animações:
+- Parado
+- Correr
+- Pular
+- CorrerRapido
+
+A animação CorrerRapido já foi importada com 6 frames.
+Configure a animação CorrerRapido com:
+- Loop: Sim
+- Velocidade da animação: 16
+
+IMPORTANTE:
+Não criar imagem.
+Não gerar arte.
+Não chamar skill pixel.
+Não substituir a animação Correr.
+Não apagar Parado, Correr ou Pular.
+Não alterar o visual do personagem.
+Não mexer em inimigos, fases ou ataques.
+O foco é somente sprint/corrida rápida do player.
+
+ANTES DE ALTERAR:
+1. Identifique o arquivo .c3p principal e mais completo.
+2. Antes de mexer no .c3p, use a skill bakups.
+3. Salve uma nova versão numerada em:
+   C:\DOCUMENTOS\Jogo\Meujogo
+4. Não apague versões antigas.
+
+OBJETIVO:
+Criar corrida rápida por duplo toque.
+
+CONTROLES:
+- D duas vezes rápido ativa sprint para direita.
+- Seta Direita duas vezes rápido ativa sprint para direita.
+- A duas vezes rápido ativa sprint para esquerda.
+- Seta Esquerda duas vezes rápido ativa sprint para esquerda.
+
+VARIÁVEIS SUGERIDAS:
+Crie ou reutilize variáveis organizadas:
+
+- SprintDoubleTapWindow = 0.25
+- SprintDuration = 0.6
+- SprintCooldown = 0.3
+- SprintSpeedMultiplier = 1.5
+- LastRightTapTime
+- LastLeftTapTime
+- IsSprinting
+- SprintDirection
+- SprintEndTime
+- LastSprintTime
+- NormalMaxSpeed
+
+LÓGICA DO DUPLO TOQUE PARA DIREITA:
+Quando D ou Seta Direita for pressionado:
+1. Verificar primeiro:
+   time - LastRightTapTime <= SprintDoubleTapWindow
+   e time - LastSprintTime >= SprintCooldown
+2. Se verdadeiro:
+   - IsSprinting = true
+   - SprintDirection = 1
+   - SprintEndTime = time + SprintDuration
+   - LastSprintTime = time
+   - aplicar velocidade de sprint para direita
+3. Se falso:
+   - salvar LastRightTapTime = time
+
+IMPORTANTE:
+Não atualizar LastRightTapTime antes da verificação.
+Senão o sprint pode ativar no primeiro toque.
+
+LÓGICA DO DUPLO TOQUE PARA ESQUERDA:
+Quando A ou Seta Esquerda for pressionado:
+1. Verificar primeiro:
+   time - LastLeftTapTime <= SprintDoubleTapWindow
+   e time - LastSprintTime >= SprintCooldown
+2. Se verdadeiro:
+   - IsSprinting = true
+   - SprintDirection = -1
+   - SprintEndTime = time + SprintDuration
+   - LastSprintTime = time
+   - aplicar velocidade de sprint para esquerda
+3. Se falso:
+   - salvar LastLeftTapTime = time
+
+IMPORTANTE:
+Não atualizar LastLeftTapTime antes da verificação.
+
+VELOCIDADE:
+Durante o sprint:
+- aumentar a velocidade horizontal do comportamento Platform.
+- usar SprintSpeedMultiplier = 1.5.
+- se a velocidade normal atual for X, a velocidade no sprint deve ser X * 1.5.
+- ao terminar o sprint, restaurar a velocidade normal.
+- não deixar a velocidade acumular infinitamente.
+
+FINALIZAR SPRINT:
+O sprint deve terminar quando:
+- time >= SprintEndTime;
+ou
+- o jogador soltar a direção correspondente;
+ou
+- o personagem parar de se mover naquela direção.
+
+Ao terminar:
+- IsSprinting = false
+- SprintDirection = 0
+- restaurar velocidade normal do Platform.
+
+ANIMAÇÕES:
+Configure a prioridade assim:
+
+1. Se o player NÃO estiver no chão:
+   tocar animação "Pular"
+
+2. Se o player estiver no chão e IsSprinting = true:
+   tocar animação "CorrerRapido"
+
+3. Se o player estiver no chão e andando normalmente:
+   tocar animação "Correr"
+
+4. Se o player estiver no chão e parado:
+   tocar animação "Parado"
+
+IMPORTANTE:
+- A animação Pular sempre tem prioridade quando estiver no ar.
+- CorrerRapido só deve tocar no chão durante sprint.
+- Parado e Correr não podem sobrescrever Pular no ar.
+- Correr não pode sobrescrever CorrerRapido durante sprint.
+
+DIREÇÃO DO PERSONAGEM:
+Durante movimento ou sprint para direita:
+- personagem deve virar para direita.
+
+Durante movimento ou sprint para esquerda:
+- personagem deve virar para esquerda.
+
+Não exigir D + Seta Direita juntos.
+Não exigir A + Seta Esquerda juntos.
+Deve funcionar com uma tecla ou outra.
+
+ORGANIZAÇÃO DOS EVENTOS:
+Se possível, organize em grupos:
+
+- PLAYER - Movimento
+- PLAYER - Direção
+- PLAYER - Sprint
+- PLAYER - Animações
+
+Não reescreva tudo.
+Altere somente o necessário.
+
+TESTES OBRIGATÓRIOS:
+Depois de alterar, revise:
+
+- D uma vez anda normal.
+- D duas vezes rápido ativa sprint.
+- Seta Direita duas vezes rápido ativa sprint.
+- A uma vez anda normal.
+- A duas vezes rápido ativa sprint.
+- Seta Esquerda duas vezes rápido ativa sprint.
+- Sprint não ativa no primeiro toque.
+- Sprint não fica infinito.
+- Sprint tem cooldown.
+- Depois do sprint, velocidade volta ao normal.
+- Durante sprint no chão, toca CorrerRapido.
+- Ao pular, toca Pular.
+- Pular não é sobrescrito por CorrerRapido.
+- Correr normal continua funcionando.
+- Parado continua funcionando.
+- Nenhuma versão antiga foi apagada.
+
+RESPOSTA FINAL:
+Explique:
+1. Qual arquivo .c3p foi usado como base.
+2. Qual backup foi criado.
+3. Quais variáveis foram criadas.
+4. Quais eventos foram adicionados ou alterados.
+5. Qual velocidade foi configurada para CorrerRapido.
+6. Como testar o sprint.
+7. Onde a nova versão foi salva.
