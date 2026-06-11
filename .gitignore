@@ -1,10 +1,31 @@
+# Secrets and local credentials
 .env
+*.env
+.env.local
 .env.*
-.agents/
-Meujogo/
-output/
-test-results/
+secrets.json
+token.json
+tokens.json
+credentials.json
+credentials.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Dependencies and generated caches
 node_modules/
-package-lock.json
-projeto jogo save 2.c3p
-projeto jogo save 2 (2) (1).c3p
+**/node_modules/
+.cache/
+**/.cache/
+tmp/
+temp/
+logs/
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini

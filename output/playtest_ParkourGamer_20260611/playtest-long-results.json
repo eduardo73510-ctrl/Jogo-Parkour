@@ -1,0 +1,71 @@
+{
+  "state": {
+    "text": "",
+    "canvas": true,
+    "url": "http://127.0.0.1:4177/index.html"
+  },
+  "mobileState": {
+    "text": "",
+    "canvas": true,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 844,
+      "height": 390,
+      "top": 0,
+      "right": 844,
+      "bottom": 390,
+      "left": 0
+    }
+  },
+  "logs": [
+    {
+      "type": "warning",
+      "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+    },
+    {
+      "type": "warning",
+      "text": "No available adapters."
+    },
+    {
+      "type": "warning",
+      "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+    },
+    {
+      "type": "warning",
+      "text": "No available adapters."
+    },
+    {
+      "type": "info",
+      "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+    },
+    {
+      "type": "info",
+      "text": "[C3 runtime] Hosted in DOM, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+    },
+    {
+      "type": "warning",
+      "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x40cc001c7e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x40cc001c7e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x40cc001c7e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "type": "warning",
+      "text": "[.WebGL-0x40cc001c7e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "type": "info",
+      "text": "Registered service worker on http://127.0.0.1:4177/"
+    }
+  ]
+}

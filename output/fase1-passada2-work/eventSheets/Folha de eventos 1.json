@@ -1,0 +1,2234 @@
+{
+	"name": "Folha de eventos 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "SprintDoubleTapWindow",
+			"type": "number",
+			"initialValue": "0.32",
+			"comment": "Tempo maximo entre dois toques para ativar corrida rapida.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 976953291858662
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintDuration",
+			"type": "number",
+			"initialValue": "2.5",
+			"comment": "Duracao maxima da corrida rapida se o jogador continuar segurando a direcao.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 515295445635540
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintCooldown",
+			"type": "number",
+			"initialValue": "0.15",
+			"comment": "Cooldown curto entre corridas rapidas.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345147936584422
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintSpeedMultiplier",
+			"type": "number",
+			"initialValue": "2.3",
+			"comment": "Multiplicador forte para corrida muito rapida.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 221362218717848
+		},
+		{
+			"eventType": "variable",
+			"name": "LastRightTapTime",
+			"type": "number",
+			"initialValue": "-99",
+			"comment": "Ultimo toque para sprint a direita.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 277951718742217
+		},
+		{
+			"eventType": "variable",
+			"name": "LastLeftTapTime",
+			"type": "number",
+			"initialValue": "-99",
+			"comment": "Ultimo toque para sprint a esquerda.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 520869243091234
+		},
+		{
+			"eventType": "variable",
+			"name": "IsSprinting",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "1 enquanto o player esta em sprint.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 233589424768287
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintDirection",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Direcao do sprint: -1 esquerda, 1 direita.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 106963343624120
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintEndTime",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Momento em que o sprint termina.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 368049345380094
+		},
+		{
+			"eventType": "variable",
+			"name": "LastSprintTime",
+			"type": "number",
+			"initialValue": "-99",
+			"comment": "Ultimo momento em que sprint foi ativado.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 445695687916829
+		},
+		{
+			"eventType": "variable",
+			"name": "NormalMaxSpeed",
+			"type": "number",
+			"initialValue": "330",
+			"comment": "Velocidade normal do Platform para restaurar apos corrida rapida.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 994552542613885
+		},
+		{
+			"eventType": "variable",
+			"name": "NormalJumpStrength",
+			"type": "number",
+			"initialValue": "650",
+			"comment": "Forca normal do pulo para restaurar depois do slide.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 824526861655147
+		},
+		{
+			"eventType": "variable",
+			"name": "IsSliding",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "1 enquanto o player esta fazendo slide.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 172704647642096
+		},
+		{
+			"eventType": "variable",
+			"name": "SlideDuration",
+			"type": "number",
+			"initialValue": "0.28",
+			"comment": "Duracao curta do slide em segundos.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 255835319353328
+		},
+		{
+			"eventType": "variable",
+			"name": "SlideEndTime",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Momento em que o slide termina.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 982544012445548
+		},
+		{
+			"eventType": "variable",
+			"name": "SlideInputLock",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Trava para nao repetir slide enquanto S/baixo esta segurado.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 108374981782882
+		},
+		{
+			"eventType": "variable",
+			"name": "LastGroundTime",
+			"type": "number",
+			"initialValue": "-99",
+			"comment": "Ultimo momento em que o player estava no chao; usado para tolerancia de pulo durante sprint.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 996510000000001
+		},
+		{
+			"eventType": "variable",
+			"name": "SprintCoyoteTime",
+			"type": "number",
+			"initialValue": "0.32",
+			"comment": "Tolerancia curta para o pulo ainda funcionar logo apos sair do chao em sprint rapido.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 996510000000002
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 870082372839151
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 656189026087533,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				}
+			],
+			"sid": 794836182338506,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 565584066550188,
+					"parameters": {
+						"key": 37
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 815860271977261,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 446884262622753,
+					"parameters": {
+						"state": "mirrored"
+					}
+				}
+			],
+			"sid": 468287124455234,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 395206760557469,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Sprite4",
+					"sid": 995300565800830,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "right"
+					}
+				}
+			],
+			"sid": 176313994094422
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 331778060443295,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Sprite4",
+					"sid": 269969666961966,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "left"
+					}
+				}
+			],
+			"sid": 562737447892879
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 996510000000003,
+					"behaviorType": "Plataforma"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 996510000000004,
+					"parameters": {
+						"variable": "LastGroundTime",
+						"value": "time"
+					}
+				}
+			],
+			"sid": 996510000000005
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 600413921404881,
+					"parameters": {
+						"key": 87
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 214574781026432,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 657795641710606,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Sprite4",
+					"sid": 766259522094743,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 406110614821814
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 891816355158489,
+					"parameters": {
+						"key": 87
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 292478505390125,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 911681469011542,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Sprite4",
+					"sid": 457854072135882,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 231337902439205
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 996510000000007,
+					"parameters": {
+						"key": 87
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000008,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000009,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 996510000000010,
+					"behaviorType": "Plataforma",
+					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000011,
+					"parameters": {
+						"first-value": "time - LastGroundTime",
+						"comparison": 3,
+						"second-value": "SprintCoyoteTime"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 996510000000012,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "Sprite4",
+					"sid": 996510000000013,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-y": "-NormalJumpStrength"
+					}
+				}
+			],
+			"sid": 996510000000006
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 426909194966769,
+					"parameters": {
+						"key": 38
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 301601286984653,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 291732965050820,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Sprite4",
+					"sid": 906905555940100,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 213925123596430
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 996510000000015,
+					"parameters": {
+						"key": 38
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000016,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000017,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 996510000000018,
+					"behaviorType": "Plataforma",
+					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 996510000000019,
+					"parameters": {
+						"first-value": "time - LastGroundTime",
+						"comparison": 3,
+						"second-value": "SprintCoyoteTime"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 996510000000020,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "Sprite4",
+					"sid": 996510000000021,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-y": "-NormalJumpStrength"
+					}
+				}
+			],
+			"sid": 996510000000014
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 310401973702101,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "is-moving",
+					"objectClass": "Sprite4",
+					"sid": 718240691634210,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 926406038413970,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 532917486105777,
+					"parameters": {
+						"animation": "\"Correr\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 892650443811236
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 441902836710554,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "is-moving",
+					"objectClass": "Sprite4",
+					"sid": 985317604221338,
+					"behaviorType": "Plataforma",
+					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 878993906126911,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 601377254934182,
+					"parameters": {
+						"animation": "\"Parado\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 237690181465923
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 253245491404739
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 191368023960023,
+					"parameters": {
+						"variable": "NormalMaxSpeed",
+						"value": "Sprite4.Plataforma.MaxSpeed"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 909660475432106,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 702345744088490,
+					"parameters": {
+						"variable": "NormalJumpStrength",
+						"value": "Sprite4.Plataforma.JumpStrength"
+					}
+				}
+			],
+			"sid": 674990628870288
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 971043084817659,
+					"parameters": {
+						"key": 39
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 667080154362008,
+					"parameters": {
+						"first-value": "time - LastRightTapTime",
+						"comparison": 3,
+						"second-value": "SprintDoubleTapWindow"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 853341614739653,
+					"parameters": {
+						"first-value": "time - LastSprintTime",
+						"comparison": 5,
+						"second-value": "SprintCooldown"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 588099244680412,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 241785351585819,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 740165658741176,
+					"parameters": {
+						"variable": "SprintEndTime",
+						"value": "time + SprintDuration"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 112249887594976,
+					"parameters": {
+						"variable": "LastSprintTime",
+						"value": "time"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 933087078209490,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 179310789142528,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 377937615495568,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 644356245391936,
+					"parameters": {
+						"animation": "\"CorrerRapido\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 148569563173866
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 292603983968547,
+					"parameters": {
+						"key": 68
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 624930784642816,
+					"parameters": {
+						"first-value": "time - LastRightTapTime",
+						"comparison": 3,
+						"second-value": "SprintDoubleTapWindow"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 677839067970018,
+					"parameters": {
+						"first-value": "time - LastSprintTime",
+						"comparison": 5,
+						"second-value": "SprintCooldown"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 934517215781139,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 773085888448913,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 684264100204675,
+					"parameters": {
+						"variable": "SprintEndTime",
+						"value": "time + SprintDuration"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 987976243657903,
+					"parameters": {
+						"variable": "LastSprintTime",
+						"value": "time"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 265846502390861,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 244240418429318,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 436061132256190,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 321978260639225,
+					"parameters": {
+						"animation": "\"CorrerRapido\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 136048504418491
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 290943499200253,
+					"parameters": {
+						"key": 39
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 210020194030131,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 749910800475201,
+					"parameters": {
+						"variable": "LastRightTapTime",
+						"value": "time"
+					}
+				}
+			],
+			"sid": 761311646122779
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 388431695594231,
+					"parameters": {
+						"key": 68
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 656679105370706,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 473827074540895,
+					"parameters": {
+						"variable": "LastRightTapTime",
+						"value": "time"
+					}
+				}
+			],
+			"sid": 105572513124566
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 994307359404091,
+					"parameters": {
+						"key": 37
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 320233337744819,
+					"parameters": {
+						"first-value": "time - LastLeftTapTime",
+						"comparison": 3,
+						"second-value": "SprintDoubleTapWindow"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 847780375232581,
+					"parameters": {
+						"first-value": "time - LastSprintTime",
+						"comparison": 5,
+						"second-value": "SprintCooldown"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 890798992043345,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 675527458693191,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 509982148164982,
+					"parameters": {
+						"variable": "SprintEndTime",
+						"value": "time + SprintDuration"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 594933537291114,
+					"parameters": {
+						"variable": "LastSprintTime",
+						"value": "time"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 484132003105361,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 308777741356718,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "-NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 429800134275476,
+					"parameters": {
+						"state": "mirrored"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 990312905872213,
+					"parameters": {
+						"animation": "\"CorrerRapido\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 612913198641981
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 862248715425081,
+					"parameters": {
+						"key": 65
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 345927214221669,
+					"parameters": {
+						"first-value": "time - LastLeftTapTime",
+						"comparison": 3,
+						"second-value": "SprintDoubleTapWindow"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 654013361366209,
+					"parameters": {
+						"first-value": "time - LastSprintTime",
+						"comparison": 5,
+						"second-value": "SprintCooldown"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 643022360649299,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 163543486319984,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "-1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 494779567564096,
+					"parameters": {
+						"variable": "SprintEndTime",
+						"value": "time + SprintDuration"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 318743003390357,
+					"parameters": {
+						"variable": "LastSprintTime",
+						"value": "time"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 573799664709626,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 281253446400390,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "-NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "Sprite4",
+					"sid": 185978798997943,
+					"parameters": {
+						"state": "mirrored"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 840441854096146,
+					"parameters": {
+						"animation": "\"CorrerRapido\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 720791397748392
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 750197180097900,
+					"parameters": {
+						"key": 37
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 276755771723460,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 552901614742448,
+					"parameters": {
+						"variable": "LastLeftTapTime",
+						"value": "time"
+					}
+				}
+			],
+			"sid": 767960732279014
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Teclado",
+					"sid": 744426136177616,
+					"parameters": {
+						"key": 65
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 558239844175696,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 359827147882336,
+					"parameters": {
+						"variable": "LastLeftTapTime",
+						"value": "time"
+					}
+				}
+			],
+			"sid": 125742419664328
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 442859201111521,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 918175323225585,
+					"parameters": {
+						"first-value": "time",
+						"comparison": 5,
+						"second-value": "SprintEndTime"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997200000000141,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 917952361421530,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 216610540229352,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 702768677217811,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				}
+			],
+			"sid": 117349683738534
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 298641988345271,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 114175853240608,
+					"parameters": {
+						"first-value": "SprintDirection",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 795629331711160,
+					"parameters": {
+						"key": 39
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 414768514182890,
+					"parameters": {
+						"key": 68
+					},
+					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997200000000142,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 776143535801243,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 833858097618825,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 164495673355175,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				}
+			],
+			"sid": 850137826274450
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 611773731997679,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 377585762732116,
+					"parameters": {
+						"first-value": "SprintDirection",
+						"comparison": 0,
+						"second-value": "-1"
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 125428584307339,
+					"parameters": {
+						"key": 37
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 204712571859946,
+					"parameters": {
+						"key": 65
+					},
+					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997200000000143,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 118225341442364,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 341697574660854,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 936483688906442,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				}
+			],
+			"sid": 135369203575823
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 643098588339600,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 776596744069084,
+					"parameters": {
+						"first-value": "SprintDirection",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 610847870860156,
+					"parameters": {
+						"first-value": "Sprite4.Plataforma.VectorX",
+						"comparison": 3,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997200000000144,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 128056855272244,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 977402307141663,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 457951568139762,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				}
+			],
+			"sid": 168292203769760
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 624681125431847,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 520397721821610,
+					"parameters": {
+						"first-value": "SprintDirection",
+						"comparison": 0,
+						"second-value": "-1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 884550297465209,
+					"parameters": {
+						"first-value": "Sprite4.Plataforma.VectorX",
+						"comparison": 5,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 997200000000145,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 394764071571277,
+					"parameters": {
+						"variable": "IsSprinting",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 244819545908964,
+					"parameters": {
+						"variable": "SprintDirection",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 768573822592217,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed"
+					}
+				}
+			],
+			"sid": 447745171480657
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 397302216518622,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 503701781599222,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 905919728978173,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 235222974161504,
+					"parameters": {
+						"animation": "\"CorrerRapido\"",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 446972442538197
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 964381356387833,
+					"parameters": {
+						"key": 83
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 770948369744879,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 392745172277268,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 925904312960261,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 164460290817208,
+					"parameters": {
+						"first-value": "SlideInputLock",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 628220530115058,
+					"parameters": {
+						"variable": "IsSliding",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 779075983097530,
+					"parameters": {
+						"variable": "SlideInputLock",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 180833102626797,
+					"parameters": {
+						"variable": "SlideEndTime",
+						"value": "time + SlideDuration"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 234697501864103,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 490557840620186,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "SprintDirection * NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 869471488479477,
+					"parameters": {
+						"animation": "\"Slide\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 871638009598336,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "0"
+					}
+				}
+			],
+			"sid": 449541198795194
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 608527755710536,
+					"parameters": {
+						"key": 40
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 183971244659797,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 155727415585417,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 174027782707119,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 479055032213562,
+					"parameters": {
+						"first-value": "SlideInputLock",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 724338604986024,
+					"parameters": {
+						"variable": "IsSliding",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 382229271293279,
+					"parameters": {
+						"variable": "SlideInputLock",
+						"value": "1"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 555876130970207,
+					"parameters": {
+						"variable": "SlideEndTime",
+						"value": "time + SlideDuration"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Sprite4",
+					"sid": 201500838934027,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"max-speed": "NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Sprite4",
+					"sid": 564906533004180,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"vector-x": "SprintDirection * NormalMaxSpeed * SprintSpeedMultiplier"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 262823228388626,
+					"parameters": {
+						"animation": "\"Slide\"",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 485491786696237,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "0"
+					}
+				}
+			],
+			"sid": 223592137217718
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 268515454613966,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 571842902194432,
+					"behaviorType": "Plataforma"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 603486468058403,
+					"parameters": {
+						"animation": "\"Slide\"",
+						"from": "current-frame"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 369610746386426,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "0"
+					}
+				}
+			],
+			"sid": 834922171379247
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 520733720356427,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 419468989547378,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 662318823753077,
+					"parameters": {
+						"key": 83
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 937277896949620,
+					"parameters": {
+						"variable": "SlideEndTime",
+						"value": "time + SlideDuration"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 828973404498897,
+					"parameters": {
+						"animation": "\"Slide\"",
+						"from": "current-frame"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 978421490822231,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "0"
+					}
+				}
+			],
+			"sid": 465613900604412
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 960333387587734,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "is-on-floor",
+					"objectClass": "Sprite4",
+					"sid": 967805025438807,
+					"behaviorType": "Plataforma"
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 889767964782135,
+					"parameters": {
+						"key": 40
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 994202671156045,
+					"parameters": {
+						"variable": "SlideEndTime",
+						"value": "time + SlideDuration"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "Sprite4",
+					"sid": 567873644090428,
+					"parameters": {
+						"animation": "\"Slide\"",
+						"from": "current-frame"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 735006691642589,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "0"
+					}
+				}
+			],
+			"sid": 148435605934192
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 653741351325963,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 420143530035705,
+					"parameters": {
+						"first-value": "IsSprinting",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 997200000000131,
+					"parameters": {
+						"key": 83
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 997200000000132,
+					"parameters": {
+						"key": 40
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 735202218228347,
+					"parameters": {
+						"variable": "IsSliding",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 110303310116413,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				}
+			],
+			"sid": 926428733126719
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 253241483342472,
+					"parameters": {
+						"first-value": "IsSliding",
+						"comparison": 0,
+						"second-value": "1"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 935847480413082,
+					"parameters": {
+						"first-value": "time",
+						"comparison": 5,
+						"second-value": "SlideEndTime"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 708665720175931,
+					"parameters": {
+						"variable": "IsSliding",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-jump-strength",
+					"objectClass": "Sprite4",
+					"sid": 373662075820049,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"jump-strength": "NormalJumpStrength"
+					}
+				}
+			],
+			"sid": 911201916076996
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 546024646352454,
+					"parameters": {
+						"key": 83
+					},
+					"isInverted": true
+				},
+				{
+					"id": "key-is-down",
+					"objectClass": "Teclado",
+					"sid": 779068456367576,
+					"parameters": {
+						"key": 40
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 770923694683984,
+					"parameters": {
+						"variable": "SlideInputLock",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 541417044000604
+		}
+	],
+	"sid": 707026374249875
+}

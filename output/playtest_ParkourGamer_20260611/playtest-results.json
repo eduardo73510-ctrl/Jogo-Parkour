@@ -1,0 +1,150 @@
+{
+  "desktop": {
+    "title": "ParkourGamer",
+    "text": "",
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 0
+      },
+      "display": "block"
+    },
+    "htmlWrap": {
+      "children": 0,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 0
+      }
+    },
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "logs": [
+      {
+        "type": "warning",
+        "text": "WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost"
+      },
+      {
+        "type": "warning",
+        "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "info",
+        "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+      },
+      {
+        "type": "info",
+        "text": "[C3 runtime] Hosted in DOM, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+      },
+      {
+        "type": "warning",
+        "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3a74001cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3a74001cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3a74001cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+      },
+      {
+        "type": "warning",
+        "text": "[.WebGL-0x3a74001cc800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      },
+      {
+        "type": "info",
+        "text": "Registered service worker on http://127.0.0.1:4177/"
+      }
+    ]
+  },
+  "mobile": {
+    "text": "",
+    "canvas": {
+      "width": 390,
+      "height": 844,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "top": 0,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "dpr": 1
+    },
+    "logs": [
+      {
+        "type": "warning",
+        "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "warning",
+        "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"
+      },
+      {
+        "type": "warning",
+        "text": "No available adapters."
+      },
+      {
+        "type": "info",
+        "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+      },
+      {
+        "type": "info",
+        "text": "[C3 runtime] Hosted in DOM, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+      },
+      {
+        "type": "warning",
+        "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+      },
+      {
+        "type": "info",
+        "text": "Registered service worker on http://127.0.0.1:4177/"
+      }
+    ]
+  },
+  "errors": []
+}

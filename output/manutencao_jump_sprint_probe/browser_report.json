@@ -1,0 +1,84 @@
+{
+  "logs": [
+    {
+      "trial": "short_010ms",
+      "type": "info",
+      "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+    },
+    {
+      "trial": "short_010ms",
+      "type": "info",
+      "text": "[C3 runtime] Hosted in worker, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+    },
+    {
+      "trial": "short_010ms",
+      "type": "warning",
+      "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+    },
+    {
+      "trial": "short_010ms",
+      "type": "info",
+      "text": "Registered service worker on http://127.0.0.1:8131/"
+    },
+    {
+      "trial": "short_020ms",
+      "type": "info",
+      "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+    },
+    {
+      "trial": "short_020ms",
+      "type": "info",
+      "text": "[C3 runtime] Hosted in worker, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+    },
+    {
+      "trial": "short_020ms",
+      "type": "warning",
+      "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+    },
+    {
+      "trial": "short_020ms",
+      "type": "info",
+      "text": "Registered service worker on http://127.0.0.1:8131/"
+    },
+    {
+      "trial": "normal_090ms",
+      "type": "info",
+      "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+    },
+    {
+      "trial": "normal_090ms",
+      "type": "info",
+      "text": "[C3 runtime] Hosted in worker, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+    },
+    {
+      "trial": "normal_090ms",
+      "type": "warning",
+      "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+    },
+    {
+      "trial": "normal_090ms",
+      "type": "info",
+      "text": "Registered service worker on http://127.0.0.1:8131/"
+    },
+    {
+      "trial": "normal_140ms",
+      "type": "info",
+      "text": "%cMade with Construct, the game and animation creation tool. Visit: https://www.construct.net font-weight: bold"
+    },
+    {
+      "trial": "normal_140ms",
+      "type": "info",
+      "text": "[C3 runtime] Hosted in worker, rendering with WebGL 2 [ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)]"
+    },
+    {
+      "trial": "normal_140ms",
+      "type": "warning",
+      "text": "[C3 runtime] The renderer indicates a major performance caveat. Software rendering may be in use. This can result in significantly degraded performance."
+    },
+    {
+      "trial": "normal_140ms",
+      "type": "info",
+      "text": "Registered service worker on http://127.0.0.1:8131/"
+    }
+  ]
+}
